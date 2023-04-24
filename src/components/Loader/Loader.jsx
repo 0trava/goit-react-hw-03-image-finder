@@ -1,8 +1,19 @@
+import css from './Loader.module.css';
+import { Component } from "react";
 
 
-<div class="container">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+export class Loader extends Component {
+
+  render () {
+    return (
+      <div className={css.container}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    )
+  }
+}
+
