@@ -1,6 +1,19 @@
+import css from './ImageGalleryItem.module.css';
 
 
+export const ImageGalleryItem = () => {
 
-<li class="gallery-item">
-  <img src="" alt="" />
-</li>
+  return (
+      <>
+      <li key="" className={ImageGalleryItem}>
+          <img
+            loading="lazy"
+            className={css.ImageGalleryItem_image}
+            src="{item.webformatURL}"
+            alt="{item.tags}"
+          />
+      </li>
+      </>
+  )
+
+}

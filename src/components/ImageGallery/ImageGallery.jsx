@@ -1,6 +1,15 @@
+import { Component } from 'react';
+import css from './ImageGallery.module.css';
 
 
+export class ImageGallery extends Component {
 
-<ul class="gallery">
-   <li></li>
-</ul>
+
+   render () {
+      return (
+         <ul className={css.ImageGallery}>
+            <li></li>
+         </ul>
+      )
+   }
+}

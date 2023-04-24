@@ -4,7 +4,7 @@ import { Component } from "react";
 
 export class Searchbar extends Component {
 
-  renred () {
+  render () {
     return (
       <header className={css.Searchbar}>
         <form className={css.SearchForm}>
