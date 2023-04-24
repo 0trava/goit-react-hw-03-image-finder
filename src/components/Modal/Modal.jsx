@@ -1,4 +1,4 @@
-import * as basicLightbox from 'basiclightbox'
+// import * as basicLightbox from 'basiclightbox'
 
 
 
@@ -17,8 +17,8 @@ import * as basicLightbox from 'basiclightbox'
 // instance.show()
 
 
-<div class="overlay">
+{/* <div class="overlay">
   <div class="modal">
     <img src="" alt="" />
   </div>
-</div>
+</div> */}
