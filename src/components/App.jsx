@@ -15,10 +15,21 @@ import {Modal} from './Modal/Modal';
 
 export class App extends Component {
 
+  // СТАРТ - завантажуємо початковий лист з зображеннями
+  async componentDidMount () {
+    
+  }
+
 
 
 // РЕНДНЕРІНГ сторінки
   render(){
+    let visible = false;
+    let test = false;
+
+    if (test) { visible = true;}
+    else {visible = false; };
+
     return (
       <div>
         <section>
@@ -31,7 +42,8 @@ export class App extends Component {
               <Button />
           </ImageGallery>
         </section>
-          <Modal />
+        { visible && (<Modal />) }
+          
       </div>
      );
   }
