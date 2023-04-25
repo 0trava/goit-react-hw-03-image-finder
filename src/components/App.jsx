@@ -21,8 +21,10 @@ export class App extends Component {
 
   }
 
+
+
   // СТАРТ - завантажуємо початковий лист з зображеннями
-  async componentDidMount () {
+  componentDidMount () {
     fetch (`https://pixabay.com/api/?q=cat&page=1&key=${API_CAY}&image_type=photo&orientation=horizontal&per_page=12`)
     .then(res => res.json())
     .then (imagelist => this.setState({imagelist}));
