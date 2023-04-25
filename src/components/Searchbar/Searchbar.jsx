@@ -1,4 +1,5 @@
 import css from './Searchbar.module.css' // стилізація
+import PropTypes from 'prop-types';
 
 
 export const Searchbar = ({handleChange, filter}) => {
@@ -24,3 +25,8 @@ export const Searchbar = ({handleChange, filter}) => {
       </header>
     )
 }
+
+Searchbar.propTypes = {
+  filter: PropTypes.string.isRequired, // рядок
+  handleChange: PropTypes.func.isRequired // функція
+};
