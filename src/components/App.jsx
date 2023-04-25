@@ -17,7 +17,7 @@ export class App extends Component {
   state = {
     imagelist: [],
     page: 1,
-    search: '',
+    filter: '',
 
   }
 
@@ -31,27 +31,29 @@ export class App extends Component {
   }
 
 
+// INPUT - зберігаємо данні при вводі текста в input
+handleChange = (event) => {
+  console.log(event.currentTarget);
+  const {name, value} = event.currentTarget;
+  this.setState({[name]: value});
+}
+
 
 // РЕНДНЕРІНГ сторінки
   render(){
-    const imagelist = this.state.imagelist.hits;
+    // const imagelist = this.state.imagelist.hits;
+    const {filter, imagelist} = this.state;
     let visible = false;
-    let test = false;
-
-    console.log(imagelist);
-
-    if (test) { visible = true;}
-    else {visible = false; };
 
     return (
       <div>
         <section>
-          <Searchbar/>
+          <Searchbar filter={filter} handleChange={this.handleChange}/>
         </section>
         <section>
-          <ImageGallery  imagelist={imagelist} />
-              { !imagelist && (<Loader/>) }
-              <Button />
+          <ImageGallery  imagelist={imagelist.hits}/>
+              { !imagelist.hits && (<Loader/>) }
+              { imagelist.hits && (<Button/>) }
         </section>
         { visible && (<Modal/>) }
           

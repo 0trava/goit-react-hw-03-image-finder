@@ -1,10 +1,8 @@
 import css from './Searchbar.module.css' // стилізація
-import { Component } from "react";
 
 
-export class Searchbar extends Component {
+export const Searchbar = ({handleChange, filter}) => {
 
-  render () {
     return (
       <header className={css.Searchbar}>
         <form className={css.SearchForm}>
@@ -13,6 +11,9 @@ export class Searchbar extends Component {
           </button>
 
           <input
+            name="filter"
+            value={filter}
+            onChange={handleChange}
             className={css.SearchForm_input}
             type="text"
             autoComplete="off"
@@ -22,5 +23,4 @@ export class Searchbar extends Component {
         </form>
       </header>
     )
-  }
 }

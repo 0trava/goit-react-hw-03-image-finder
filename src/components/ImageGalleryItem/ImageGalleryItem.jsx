@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'; // типизація пропсів
 
 
 export const ImageGalleryItem = ({imagelist}) => {
-   console.log("start");
-   console.log(imagelist );
    if (imagelist) {
       return (
         <>

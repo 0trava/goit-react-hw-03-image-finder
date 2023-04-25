@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'; // типизація пропсів
 
 
 export const ImageGallery = ({imagelist}) => {
-      console.log(imagelist);
       return (
          <>
             <ul className={css.ImageGallery}>
