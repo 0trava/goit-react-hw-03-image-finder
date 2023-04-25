@@ -3,11 +3,11 @@ import {ImageGalleryItem} from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types'; // типизація пропсів
 
 
-export const ImageGallery = ({imagelist}) => {
+export const ImageGallery = ({imagelist, openModal}) => {
       return (
          <>
             <ul className={css.ImageGallery}>
-              <ImageGalleryItem imagelist ={imagelist} />
+              <ImageGalleryItem imagelist ={imagelist} openModal={openModal}/>
             </ul>
          </>
 
@@ -16,5 +16,6 @@ export const ImageGallery = ({imagelist}) => {
 
 ImageGallery.propTypes = {
    imagelist: PropTypes.arrayOf(PropTypes.object).isRequired, // масив об'єктів
+   openModal: PropTypes.func.isRequired // функція
  };
  

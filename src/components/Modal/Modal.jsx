@@ -1,19 +1,16 @@
 // import * as basicLightbox from 'basiclightbox'
-import { Component } from 'react';
 import css from './Modal.module.css';
 
 
-export class Modal extends Component{
-
-  render () {
+export const Modal = ({closeModal, src, alt})=>{
+      console.log(src);
     return(
-      <div className={css.Overlay}>
+      <div className={css.Overlay} onClick={closeModal}>
         <div className={css.Modal}>
-          <img src="" alt="" />
+          <img src={src} alt={alt} />
         </div>
       </div>
     )
-  }
 }
 
 

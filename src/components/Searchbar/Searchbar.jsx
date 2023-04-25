@@ -6,8 +6,9 @@ export const Searchbar = ({handleChange, filter, searchBtnClick}) => {
 
     return (
       <header className={css.Searchbar}>
-        <form className={css.SearchForm}>
-          <button onClick={searchBtnClick} type="submit" className={css.SearchForm_button}>
+        <form  onSubmit={searchBtnClick} 
+        className={css.SearchForm}>
+          <button type="submit" className={css.SearchForm_button}>
             <span className={css.SearchForm_button_label}>Search</span>
           </button>
 
