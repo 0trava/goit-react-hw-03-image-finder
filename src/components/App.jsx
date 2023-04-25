@@ -33,9 +33,18 @@ export class App extends Component {
 
 // INPUT - зберігаємо данні при вводі текста в input
 handleChange = (event) => {
-  console.log(event.currentTarget);
   const {name, value} = event.currentTarget;
   this.setState({[name]: value});
+}
+
+// FILTER - запуск команди пошуку
+searchBtnClick = (e) => {
+  e.preventDefault(); // Зупиняємо оновлення сторінки
+  const {filter} = this.state;
+  fetch (`https://pixabay.com/api/?q=${filter}&page=1&key=${API_CAY}&image_type=photo&orientation=horizontal&per_page=12`)
+  .then(res => res.json())
+  .then (imagelist => this.setState({imagelist}));
+  console.log(this.state.filter);
 }
 
 
@@ -48,7 +57,7 @@ handleChange = (event) => {
     return (
       <div>
         <section>
-          <Searchbar filter={filter} handleChange={this.handleChange}/>
+          <Searchbar filter={filter} handleChange={this.handleChange} searchBtnClick={this.searchBtnClick}/>
         </section>
         <section>
           <ImageGallery  imagelist={imagelist.hits}/>

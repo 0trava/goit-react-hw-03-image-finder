@@ -2,12 +2,12 @@ import css from './Searchbar.module.css' // стилізація
 import PropTypes from 'prop-types';
 
 
-export const Searchbar = ({handleChange, filter}) => {
+export const Searchbar = ({handleChange, filter, searchBtnClick}) => {
 
     return (
       <header className={css.Searchbar}>
         <form className={css.SearchForm}>
-          <button type="submit" className={css.SearchForm_button}>
+          <button onClick={searchBtnClick} type="submit" className={css.SearchForm_button}>
             <span className={css.SearchForm_button_label}>Search</span>
           </button>
 
