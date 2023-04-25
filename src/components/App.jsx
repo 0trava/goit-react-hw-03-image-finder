@@ -49,10 +49,9 @@ export class App extends Component {
           <Searchbar/>
         </section>
         <section>
-          <ImageGallery  imagelist={imagelist} >
-              <Loader />
+          <ImageGallery  imagelist={imagelist} />
+              { !imagelist && (<Loader/>) }
               <Button />
-          </ImageGallery>
         </section>
         { visible && (<Modal/>) }
           
