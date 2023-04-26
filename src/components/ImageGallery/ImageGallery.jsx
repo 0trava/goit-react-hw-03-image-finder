@@ -4,6 +4,11 @@ import PropTypes from 'prop-types'; // типизація пропсів
 
 
 export const ImageGallery = ({imagelist, openModal}) => {
+
+
+ if (imagelist) {
+   if (imagelist.length > 0){
+      console.log(imagelist.length);
       return (
          <>
             <ul className={css.ImageGallery}>
@@ -12,6 +17,19 @@ export const ImageGallery = ({imagelist, openModal}) => {
          </>
 
       )
+    } else {
+      return (
+         <>
+            <div>
+               <h1>We don't find image with this name</h1>
+            </div>
+         </>
+
+      )
+
+    }
+ }
+
 }
 
 ImageGallery.propTypes = {

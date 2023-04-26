@@ -110,6 +110,7 @@ checkBtnLoad = () =>{
   if (this.state.imagelist.hits) {
     console.log(this.state.imagelist.total);
     console.log(this.state.imagelist.hits.length);
+
     if (this.state.imagelist.total > this.state.imagelist.hits.length ) {
       showBtn = true;
     } else { 
@@ -132,9 +133,8 @@ checkBtnLoad = () =>{
           <Searchbar filter={filter} handleChange={this.handleChange} searchBtnClick={this.searchBtnClick}/>
         </section>
         <section>
-          <ImageGallery  imagelist={imagelist.hits} openModal={this.openModal}/>
+        {imagelist && (<ImageGallery  imagelist={imagelist.hits} openModal={this.openModal}/>)}
               { loading && (<Loader/>) }
-
               { showBtn && (<Button clickLoadMore={this.clickLoadMore}/>) }
         </section>
         {showModal && (
