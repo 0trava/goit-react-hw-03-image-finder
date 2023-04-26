@@ -17,10 +17,7 @@ export class App extends Component {
 
   state = {
     imagelist: [],
-    photoName: "",
-    totalHits: 0,
     page: 1,
-    stopPage: 1,
     filter: '',
     loading: false,
     showModal: false,
@@ -39,12 +36,13 @@ handleChange = (event) => {
 // FILTER - запуск команди пошуку
 searchBtnClick = (e) => {
   e.preventDefault(); // Зупиняємо оновлення сторінки
-  PHOTO_NAME = this.state.filter.trim();
+  PHOTO_NAME = this.state.filter.trim(); // Зберігаємо значення filter
 
 
   this.setState({imagelist: []}); // Чистемо сторінку
   this.setState({totalHits: 0});// Скидаємо лічильник
   this.setState({page: 2});// Оновлюємо номер сторінки
+  showBtn = false;// Ховаємо кнопку
   
 
   if (this.state.filter.trim() === ''){
@@ -52,41 +50,30 @@ searchBtnClick = (e) => {
     return;
   } else {
 
-    this.setState({loading: true});// Зупecкаємо Лоадер
+    this.setState({loading: true});// Запуcкаємо Лоадер
     // отримаємо данні з сервера
     fetch (`${BASE_URL}?q=${PHOTO_NAME}&page=1&key=${MY_API_KEY}&image_type=photo&orientation=horizontal&per_page=12`)
     .then(res => res.json())
     .then (imagelist => this.setState({imagelist}))
-    .finally(() => this.setState({loading: false}))
-    .catch(error => {error.alert(`Image not find`)})
-  
-    // this.setState({totalHits: this.state.imagelist.total});
-    // this.setState({stopPage: Math.round(this.state.imagelist.total /12)});
+    .finally(() => this.setState({loading: false}));// Зупиняємо Лоадер
+
     this.setState( { filter: ''}); // очищення вмісту форми
-    console.log(this.state.imagelist.total);
-    console.log(this.state.imagelist.hits.length);
   }
   };
 
 // LOAD MORE - дозавантиження 
 clickLoadMore = (e) =>  {
-
-
   e.preventDefault(); // Зупиняємо оновлення сторінки
-  this.setState({page: this.state.page+1}); 
+  this.setState({page: this.state.page+1}); // Додаємо значення сторінки +1
 
-  console.log(this.state.imagelist.total);
-  console.log(this.state.imagelist.hits.length);
-
-
+   // ПЕРЕВІРКА - чи є ще сторінка для дозавантаження
     if ( this.state.imagelist.total > this.state.imagelist.hits.length){
-      console.log("Add image");
-      this.setState({loading: true});// Зупecкаємо Лоадер
+      this.setState({loading: true});// Запуcкаємо Лоадер
       // отримаємо данні з сервера
       fetch (`${BASE_URL}?q=${PHOTO_NAME}&page=1&key=${MY_API_KEY}&image_type=photo&orientation=horizontal&per_page=${this.state.page*12}`)
       .then(res => res.json())
       .then (imagelist => this.setState({imagelist}))
-      .finally(() => this.setState({loading: false}))
+      .finally(() => this.setState({loading: false}))// Зупиняємо Лоадер
     } 
 
 }
@@ -108,9 +95,6 @@ closeModal = () => {
 // ПЕРЕВІРКА для кнопки Load more (відображаємо чи ні)
 checkBtnLoad = () =>{
   if (this.state.imagelist.hits) {
-    console.log(this.state.imagelist.total);
-    console.log(this.state.imagelist.hits.length);
-
     if (this.state.imagelist.total > this.state.imagelist.hits.length ) {
       showBtn = true;
     } else { 
@@ -123,7 +107,6 @@ checkBtnLoad = () =>{
 // РЕНДНЕРІНГ сторінки
   render(){
     const {filter, imagelist, loading, showModal, largeImageURL, alt } = this.state;
-
     this.checkBtnLoad()
 
 

@@ -8,7 +8,6 @@ export const ImageGallery = ({imagelist, openModal}) => {
 
  if (imagelist) {
    if (imagelist.length > 0){
-      console.log(imagelist.length);
       return (
          <>
             <ul className={css.ImageGallery}>
@@ -20,8 +19,8 @@ export const ImageGallery = ({imagelist, openModal}) => {
     } else {
       return (
          <>
-            <div>
-               <h1>We don't find image with this name</h1>
+            <div className={css.image_404}>
+               <img src="https://rs.ui.ac.id/umum/files/promosi/20220325112709-1.jpeg" alt="404" />
             </div>
          </>
 
